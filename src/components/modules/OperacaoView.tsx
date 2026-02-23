@@ -2,10 +2,10 @@ import { KpiCard } from '@/components/KpiCard';
 
 export function OperacaoView() {
   return (
-    <div className="grid gap-3 min-h-0 h-full"
+    <div className="grid gap-[clamp(10px,1vw,14px)] min-h-0 h-full"
       style={{
-        gridTemplateColumns: '420px 1fr 1fr',
-        gridTemplateRows: '360px 420px',
+        gridTemplateColumns: '340px 1fr 1fr',
+        gridTemplateRows: '1fr 1fr',
         gridTemplateAreas: `"side donut bars" "side area ticker"`,
       }}
     >
