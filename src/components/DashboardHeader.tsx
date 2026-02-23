@@ -1,15 +1,22 @@
 import { useClock } from '@/hooks/use-clock';
 
-export function DashboardHeader() {
+interface DashboardHeaderProps {
+  logoSrc?: string;
+}
+
+export function DashboardHeader({ logoSrc }: DashboardHeaderProps) {
   const clock = useClock();
 
   return (
-    <header className="flex items-center justify-between px-3 py-2.5">
+    <header className="flex items-center justify-between px-3 py-2">
       <div className="flex items-center gap-3 opacity-95">
-        <div className="font-black text-2xl tracking-tight">
-          <span className="text-primary">Zi</span>
-          <span className="text-foreground">Sign</span>
-        </div>
+        {logoSrc && (
+          <img
+            src={logoSrc}
+            alt="ZiSign"
+            className="h-[clamp(50px,7vh,100px)] w-auto drop-shadow-[0_10px_30px_rgba(0,0,0,.45)]"
+          />
+        )}
       </div>
       <div className="font-extrabold tracking-[.18em] text-sm text-foreground/88 px-4 py-2.5 rounded-full glass-card">
         {clock}
