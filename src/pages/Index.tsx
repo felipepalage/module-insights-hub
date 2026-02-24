@@ -8,7 +8,7 @@ const Index = () => {
       className="h-screen max-w-[2560px] mx-auto p-[clamp(12px,1.2vw,18px)] grid gap-[clamp(10px,1vw,14px)] overflow-hidden"
       style={{ gridTemplateRows: 'auto 1fr auto' }}
     >
-      <DashboardHeader logoSrc="/logo-zisign.svg" />
+      <DashboardHeader logoSrc="./logo-zisign.svg" />
 
       <div
         className="min-h-0 grid gap-[clamp(10px,1vw,14px)]"
