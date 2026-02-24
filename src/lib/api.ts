@@ -21,7 +21,8 @@ export async function fetchModuleEvents(): Promise<ZiSignEvent[]> {
         throw new Error('Failed to fetch module events');
     }
 
-    return response.json();
+    const data = await response.json();
+    return Array.isArray(data) ? data : (data.data || []);
 }
 
 export interface ZiSignOperation {

@@ -11,7 +11,7 @@ export function useZiSignModules() {
             // Create a map of apiId to event counts
             // Create a map of portalId to event counts
             const moduleStats = data.reduce((acc, event) => {
-                const moduleId = event.idPortalModulo; // Changed from idTipoModulo
+                const moduleId = event.idTipoModulo; // Reverted from idPortalModulo
                 if (!acc[moduleId]) {
                     acc[moduleId] = { count: 0, events: [] };
                 }
