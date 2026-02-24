@@ -9,8 +9,9 @@ export function useZiSignModules() {
         refetchInterval: 30000, // Refresh every 30 seconds
         select: (data: ZiSignEvent[]) => {
             // Create a map of apiId to event counts
+            // Create a map of portalId to event counts
             const moduleStats = data.reduce((acc, event) => {
-                const moduleId = event.idTipoModulo;
+                const moduleId = event.idPortalModulo; // Changed from idTipoModulo
                 if (!acc[moduleId]) {
                     acc[moduleId] = { count: 0, events: [] };
                 }
@@ -24,8 +25,6 @@ export function useZiSignModules() {
                 ...m,
                 pendencias: moduleStats[m.apiId]?.count || 0,
                 recentEvents: moduleStats[m.apiId]?.events || [],
-                // Processados count is harder to determine without historical data or another endpoint
-                // For now we'll display 0 or a placeholder
                 processados: 0,
             }));
         },

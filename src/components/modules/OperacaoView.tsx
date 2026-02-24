@@ -192,7 +192,7 @@ export function OperacaoView() {
             </div>
           ) : (
             <div className="animate-vertical-ticker">
-              {[...allEvents.slice(0, 10), ...allEvents.slice(0, 10)].map((op, i) => (
+              {[...allEvents, ...allEvents].map((op, i) => (
                 <div key={i} className="grid gap-3 items-center p-4 rounded-2xl border border-foreground/10 bg-black/14"
                   style={{ gridTemplateColumns: '120px 1fr 160px 140px' }}
                 >

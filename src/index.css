@@ -40,10 +40,10 @@
     --glass: 0 0% 100% / 0.06;
     --glass2: 0 0% 100% / 0.04;
     --glass-border: 0 0% 100% / 0.10;
-    --shadow-deep: 0 22px 70px rgba(0,0,0,.55);
+    --shadow-deep: 0 22px 70px rgba(0, 0, 0, .55);
     --gradient-bg: linear-gradient(180deg, hsl(220 30% 3%), hsl(220 25% 5%));
-    --gradient-glow-green: radial-gradient(900px 600px at 10% 20%, hsla(163,100%,47%,.10) 0%, transparent 60%);
-    --gradient-glow-blue: radial-gradient(900px 600px at 90% 10%, hsla(200,100%,50%,.10) 0%, transparent 60%);
+    --gradient-glow-green: radial-gradient(900px 600px at 10% 20%, hsla(163, 100%, 47%, .10) 0%, transparent 60%);
+    --gradient-glow-blue: radial-gradient(900px 600px at 90% 10%, hsla(200, 100%, 50%, .10) 0%, transparent 60%);
 
     --sidebar-background: 220 20% 6%;
     --sidebar-foreground: 0 0% 92%;
@@ -74,11 +74,9 @@
 
 /* Glass card utility */
 .glass-card {
-  background: linear-gradient(
-    180deg,
-    hsl(var(--glass)),
-    hsl(var(--glass2))
-  );
+  background: linear-gradient(180deg,
+      hsl(var(--glass)),
+      hsl(var(--glass2)));
   border: 1px solid hsl(var(--glass-border));
   box-shadow: var(--shadow-deep);
   backdrop-filter: blur(14px);
@@ -90,6 +88,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -139,7 +138,7 @@
 .kpi-box {
   @apply rounded-2xl p-4;
   border: 1px solid hsl(0 0% 100% / 0.08);
-  background: rgba(0,0,0,.14);
+  background: rgba(0, 0, 0, .14);
 }
 
 .kpi-label {
@@ -154,4 +153,25 @@
 .kpi-sub {
   @apply font-extrabold text-base mt-2;
   color: hsl(var(--muted-foreground));
+}
+
+@keyframes vertical-ticker {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-vertical-ticker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: vertical-ticker 40s linear infinite;
+}
+
+.animate-vertical-ticker:hover {
+  animation-play-state: paused;
 }
