@@ -13,7 +13,8 @@ export function ModuleSummaryCard({ module }: ModuleSummaryCardProps) {
   return (
     <div className="glass-card p-3.5 flex flex-col gap-2 min-w-0">
       <div className="flex items-center justify-between gap-2">
-        <span className="font-black text-xs tracking-widest uppercase text-foreground/70 truncate">
+        <span className="font-black text-xs tracking-widest uppercase text-foreground/70 truncate flex items-center gap-2">
+          <span className="opacity-40 font-mono">#{module.apiId}</span>
           {module.label}
         </span>
         <span className={`pill ${pendencias === 0 ? 'pill-ok' : 'bg-amber-500/20 text-amber-500'} text-xs !py-1 !px-2.5 shrink-0`}>

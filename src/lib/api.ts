@@ -47,15 +47,17 @@ export async function fetchOperations(): Promise<ZiSignOperation[]> {
     const data = await response.json();
     const eventos = Array.isArray(data) ? data : (data.data || []);
 
-    return eventos.map((ev: any) => {
-        const atrasoRaw = (ev.hrAtraso || "00:00:00").toString().trim();
-        const [ah, am, as] = atrasoRaw.split(":").map(Number);
-        const totalSeg = (ah || 0) * 3600 + (am || 0) * 60 + (as || 0);
+    return eventos
+        .filter((ev: any) => ev.nomeFundo !== 'Zitec FIDC')
+        .map((ev: any) => {
+            const atrasoRaw = (ev.hrAtraso || "00:00:00").toString().trim();
+            const [ah, am, as] = atrasoRaw.split(":").map(Number);
+            const totalSeg = (ah || 0) * 3600 + (am || 0) * 60 + (as || 0);
 
-        return {
-            ...ev,
-            atrasoSeg: totalSeg,
-            atrasoStr: atrasoRaw,
-        };
-    });
+            return {
+                ...ev,
+                atrasoSeg: totalSeg,
+                atrasoStr: atrasoRaw,
+            };
+        });
 }
