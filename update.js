@@ -1,0 +1,15 @@
+const fs = require('fs');
+const path = 'assets/index-Cc6wxg0n.js';
+let text = fs.readFileSync(path, 'utf16le');
+const oldTP = 'j.jsxs( span,{className:font-black text-xs tracking-widest uppercase text-foreground/70 truncate flex items-center gap-2,children:[j.jsxs(span,{className:opacity-40 font-mono,children:[#,e.apiId]}),e.label]})';
+const newTP = 'j.jsxs(div,{className:flex flex-col gap-0.5 truncate min-w-0,children:[j.jsxs(span,{className:font-black text-xs tracking-widest uppercase text-foreground/70 truncate flex items-center gap-2,children:[j.jsxs(span,{className:opacity-40 font-mono,children:[#,e.apiId]}),e.label]}),j.jsx(span,{className:text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/50 leading-none,children:Portal })]})';
+console.log('oldTP found', text.includes(oldTP));
+text = text.replace(oldTP, newTP);
+console.log('oldTP now present', text.includes(oldTP));
+const oldPendencias = 'j.jsx(div,{className:flex-1 min-h-0 overflow-hidden,children:e&&e.length?j.jsxs(div,{className:flex flex-col gap-3,children:e.map((d,p)=>j.jsx(TP,{module:d},d.apiId||p))}):j.jsx(div,{className:p-3 rounded-2xl border border-foreground/10 bg-black/16 flex flex-col gap-2,children:j.jsx(span,{className:font-black text-sm opacity-60,children:Nenhum módulo encontrado})})})';
+const newPendencias = 'j.jsx(div,{className:flex-1 min-h-0 overflow-hidden,children:e&&e.length?j.jsx(div,{className:animate-vertical-ticker,children:[e.map((d,p)=>j.jsx(TP,{module:d},d.apiId||p)),e.map((d,p)=>j.jsx(TP,{module:d},$\{d.apiId||p}-clone))]}):j.jsx(div,{className:p-3 rounded-2xl border border-foreground/10 bg-black/16 flex flex-col gap-2,children:j.jsx(span,{className:font-black text-sm opacity-60,children:Nenhum módulo encontrado})})})';
+console.log('oldPendencias found', text.includes(oldPendencias));
+text = text.replace(oldPendencias, newPendencias);
+console.log('oldPendencias now present', text.includes(oldPendencias));
+if(!text.includes('animate-vertical-ticker')) console.error('ticker missing');
+fs.writeFileSync(path, text, 'utf16le');
