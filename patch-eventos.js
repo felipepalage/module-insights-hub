@@ -1,0 +1,11 @@
+﻿const fs = require('fs');
+const path = 'assets/index-Cc6wxg0n.js';
+let text = fs.readFileSync(path, 'utf16le');
+const start = text.indexOf('const e=await fetch(');
+if(start === -1) throw new Error('start not found');
+const end = text.indexOf(');', start);
+if(end === -1) throw new Error('end not found');
+const old = text.slice(start, end + 2);
+const replace = 'const now=new Date,mes=String(now.getMonth()+1).padStart(2, 0),ano=now.getFullYear(),e=await fetch(https://custodiabackend-staging.idsf.com.br/api/ZiSign/eventos-unicos?mes=&ano=,{headers:NT});';
+text = text.replace(old, replace);
+fs.writeFileSync(path, text, 'utf16le');
